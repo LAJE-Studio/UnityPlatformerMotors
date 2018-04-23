@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityPlatformerMotors", "UnityPlatformerMotors\UnityPlatformerMotors.csproj", "{39EBCBE9-0D91-4748-B8C7-1DA714568045}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPM-Runtime", "UPM-Runtime\UPM-Runtime.csproj", "{39EBCBE9-0D91-4748-B8C7-1DA714568045}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
