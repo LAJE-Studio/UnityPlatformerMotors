@@ -3,8 +3,8 @@
 namespace UPM {
     /// <inheritdoc />
     /// <summary>
-    /// Um "motor" representa uma maneira em que um <see cref="MotorUser"/> pode se movimentar.
-    /// <br/>
+    /// Um "motor" representa uma maneira em que um <see cref="T:UPM.MotorUser" /> pode se movimentar.
+    /// <br />
     /// Podem, e na esmagadora maioria das vezes, devem, existir mais de uma instância de uma subclasse de um motor, mas
     /// com configurações diferentes usadas por diferentes usuários.
     /// </summary>
