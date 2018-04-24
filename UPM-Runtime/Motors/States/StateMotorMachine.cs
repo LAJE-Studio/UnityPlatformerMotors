@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UPM.Motors.Config;
 
 namespace UPM.Motors.States {
     [Serializable]
@@ -20,8 +21,8 @@ namespace UPM.Motors.States {
             }
         }
 
-        public void Move(MotorUser user) {
-            state.Move(user, this);
+        public void Move(MotorUser user, ref Vector2 velocity, ref CollisionStatus status, StateMotorConfig config) {
+            state.Move(user, ref velocity, ref status, this, config);
         }
     }
 }

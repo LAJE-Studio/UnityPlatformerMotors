@@ -1,7 +1,32 @@
-﻿namespace UPM.Motors.States.BuiltIn {
+﻿using UnityEngine;
+using UPM.Motors.Config;
+using UPM.Physics;
+
+namespace UPM.Motors.States.BuiltIn {
     public sealed class GroundedState : State {
-        public float Gravity = -19.62F;
         public State OnGetOffGround;
-        public override void Move(MotorUser user, StateMotorMachine machine) { }
+        public static readonly VerticalPhysicsCheck VerticalVelocityCheck = new VerticalPhysicsCheck();
+        public static readonly HorizontalPhysicsCheck HorizontalVelocityCheck = new HorizontalPhysicsCheck();
+        public static readonly VerticalPhysicsCheck SlopeCheck = new VerticalPhysicsCheck(SlopeCheckProvider);
+
+        public static readonly PhysicsBehaviour GroundedBehaviour = new PhysicsBehaviour(
+            VerticalVelocityCheck,
+            HorizontalVelocityCheck,
+            SlopeCheck
+        );
+
+        private static Vector2 SlopeCheckProvider(MotorUser arg) {
+            return Vector2.down * Time.fixedDeltaTime;
+        }
+
+
+        public override void Move(MotorUser user, ref Vector2 velocity, ref CollisionStatus collisionStatus, StateMotorMachine machine, StateMotorConfig config1) {
+            var config = user.GetMotorConfig<GroundMotorConfig>();
+            if (config == null) {
+                return;
+            }
+
+            GroundedBehaviour.Check(user, ref velocity, ref collisionStatus);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UPM.Motors.Config;
 
 namespace UPM.Motors {
     /// <inheritdoc />
@@ -13,6 +14,16 @@ namespace UPM.Motors {
         /// Função usada para movimentar um <see cref="MotorUser"/>
         /// </summary>
         /// <param name="user"></param>
-        public abstract void Move(MotorUser user);
+        public void Move(MotorUser user) {
+            var vel = user.Velocity;
+            var status = user.CollisionStatus;
+            Move(user, ref vel, ref status);
+            user.CollisionStatus = status;
+            user.Velocity = vel;
+        }
+
+        public abstract void Move(MotorUser user, ref Vector2 velocity, ref CollisionStatus status);
+        public abstract bool RequiresConfig(MotorUser user);
+        public abstract MotorConfig CreateConfig(MotorUser user);
     }
 }
