@@ -17,6 +17,7 @@ namespace UPM.Editor.States {
         public override void OnInspectorGUI() {
             var e = Event.current;
             var states = UPMEditorUtil.GetAllStates(motor);
+            motor.DefaultState = (State) EditorGUILayout.ObjectField("Default State", motor.DefaultState, typeof(State), false);
             var notEmpty = states.Count > 0;
             EditorGUILayout.PrefixLabel((notEmpty ? states.Count.ToString() : "No") + " states found");
 

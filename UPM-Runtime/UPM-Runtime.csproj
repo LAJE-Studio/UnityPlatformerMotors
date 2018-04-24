@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CollisionStatus.cs" />
     <Compile Include="Input\InputProvider.cs" />
+    <Compile Include="Input\NativeInputProvider.cs" />
     <Compile Include="Motor.cs" />
     <Compile Include="MotorUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

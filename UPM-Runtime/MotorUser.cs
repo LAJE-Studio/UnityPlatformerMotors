@@ -23,6 +23,10 @@ namespace UPM {
         /// </summary>
         public AnimationCurve AccelerationCurve;
 
+        /// <summary>
+        /// A fonte de input do qual o <see cref="Motor"/> selecionado usa para inputs
+        /// <seealso cref="InputProvider"/>
+        /// </summary>
         public InputProvider InputProvider;
 
         /// <summary>
@@ -35,11 +39,19 @@ namespace UPM {
         /// </summary>
         public Transform MovementTransform;
 
+        /// <summary>
+        /// O <see cref="UPM.Motor"/> usado por esse usuário?
+        /// </summary>
         public Motor Motor;
 
-        public void Move() { }
+        public void Move() {
+            Motor.Move(this);
+        }
         private StateMotorMachine cachedMachine;
 
+        /// <summary>
+        /// A maquina de está que pode ser usada por um <see cref="StateMotor"/> caso seja o tipo do <see cref="Motor"/>
+        /// </summary>
         public StateMotorMachine StateMachine {
             get {
                 var m = Motor as StateMotor;
