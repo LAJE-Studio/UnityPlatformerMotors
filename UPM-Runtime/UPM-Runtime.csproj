@@ -43,7 +43,9 @@
     <Compile Include="Motor.cs" />
     <Compile Include="MotorUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateMotor.cs" />
+    <Compile Include="States\State.cs" />
+    <Compile Include="States\StateMotor.cs" />
+    <Compile Include="States\StateMotorMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\LICENSE.md">

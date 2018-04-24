@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UPM.States;
 
 namespace UPM {
     /// <inheritdoc />
@@ -30,6 +31,19 @@ namespace UPM {
         /// O <see cref="Transform"/> ao qual o <see cref="Motor"/> aplica movimentação.
         /// </summary>
         public Transform MovementTransform;
+
+        public Motor Motor;
+        private StateMotorMachine cachedMachine;
+
+        public StateMotorMachine StateMachine {
+            get {
+                var m = Motor as StateMotor;
+                if (m == null) {
+                    return null;
+                }
+                return cachedMachine ?? (cachedMachine = new StateMotorMachine(m.DefaultState));
+            }
+        }
 
         private void Reset() {
             //Ao ser resetado, o transform de movimento torna-se o transform ao qual o component está anexado

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Libraries\UnityEditor.dll</HintPath>
@@ -43,7 +44,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Editor\StateMotorEditor.cs" />
+    <Compile Include="Editor\States\StateEditor.cs" />
+    <Compile Include="Editor\States\StateMotorEditor.cs" />
+    <Compile Include="Editor\States\StateSelectorContent.cs" />
+    <Compile Include="Editor\UPMAssemblyUtil.cs" />
+    <Compile Include="Editor\UPMEditor.cs" />
+    <Compile Include="Editor\UPMEditorUtil.cs" />
+    <Compile Include="Editor\UPMRectUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
