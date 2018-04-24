@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace UPM.States {
+namespace UPM.Motors.States {
     /// <inheritdoc />
     /// <summary>
     /// Um <see cref="Motor"/> baseado em estados, muito usado em entidades que tem gravidade e se movimentam pelo chão.

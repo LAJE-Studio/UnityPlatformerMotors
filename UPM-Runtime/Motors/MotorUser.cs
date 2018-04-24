@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UPM.Input;
-using UPM.States;
+using UPM.Motors;
+using UPM.Motors.States;
 
 namespace UPM {
     /// <inheritdoc />
@@ -40,7 +41,7 @@ namespace UPM {
         public Transform MovementTransform;
 
         /// <summary>
-        /// O <see cref="UPM.Motor"/> usado por esse usuário?
+        /// O <see cref="Motors.Motor"/> usado por esse usuário?
         /// </summary>
         public Motor Motor;
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UPM {
+namespace UPM.Motors {
     /// <inheritdoc />
     /// <summary>
     /// Um "motor" representa uma maneira em que um <see cref="T:UPM.MotorUser" /> pode se movimentar.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UPM.States;
+using UPM.Motors.States;
 
 namespace UPM.Editor.States {
     public class StateSelectorContent : PopupWindowContent {

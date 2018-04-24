@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UPM.States {
+namespace UPM.Motors.States {
     [Serializable]
     public sealed class StateMotorMachine {
         public StateMotorMachine(State state) {

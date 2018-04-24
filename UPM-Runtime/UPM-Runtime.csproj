@@ -43,16 +43,16 @@
     <Compile Include="CollisionStatus.cs" />
     <Compile Include="Input\InputProvider.cs" />
     <Compile Include="Input\NativeInputProvider.cs" />
-    <Compile Include="Motor.cs" />
-    <Compile Include="MotorUser.cs" />
+    <Compile Include="Motors\Motor.cs" />
+    <Compile Include="Motors\MotorUser.cs" />
+    <Compile Include="Motors\States\BuiltIn\DashState.cs" />
+    <Compile Include="Motors\States\BuiltIn\GroundedState.cs" />
+    <Compile Include="Motors\States\BuiltIn\MidAirState.cs" />
+    <Compile Include="Motors\States\BuiltIn\WallClimbingState.cs" />
+    <Compile Include="Motors\States\State.cs" />
+    <Compile Include="Motors\States\StateMotor.cs" />
+    <Compile Include="Motors\States\StateMotorMachine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="States\BuiltIn\DashState.cs" />
-    <Compile Include="States\BuiltIn\GroundedState.cs" />
-    <Compile Include="States\BuiltIn\MidAirState.cs" />
-    <Compile Include="States\BuiltIn\WallClimbingState.cs" />
-    <Compile Include="States\State.cs" />
-    <Compile Include="States\StateMotor.cs" />
-    <Compile Include="States\StateMotorMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\LICENSE.md">

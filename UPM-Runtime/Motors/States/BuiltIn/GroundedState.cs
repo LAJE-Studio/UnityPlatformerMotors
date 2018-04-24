@@ -1,4 +1,4 @@
-﻿namespace UPM.States.BuiltIn {
+﻿namespace UPM.Motors.States.BuiltIn {
     public class GroundedState : State {
         public float Gravity = -19.62F;
         public State OnGetOffGround;
