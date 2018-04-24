@@ -30,6 +30,7 @@ namespace UPM.Editor.States {
                 }
 
                 var instance = (State) ScriptableObject.CreateInstance(type);
+                instance.name = type.Name;
                 AssetDatabase.AddObjectToAsset(instance, motor);
                 AssetDatabase.SaveAssets();
                 UPMEditorUtil.NotifyNewInstance(motor, instance);

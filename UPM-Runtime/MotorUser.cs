@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UPM.Input;
 using UPM.States;
 
 namespace UPM {
@@ -22,6 +23,8 @@ namespace UPM {
         /// </summary>
         public AnimationCurve AccelerationCurve;
 
+        public InputProvider InputProvider;
+
         /// <summary>
         /// A velocidade máxima em que este usuário pode se encontrar. 
         /// </summary>
@@ -33,6 +36,8 @@ namespace UPM {
         public Transform MovementTransform;
 
         public Motor Motor;
+
+        public void Move() { }
         private StateMotorMachine cachedMachine;
 
         public StateMotorMachine StateMachine {
@@ -41,6 +46,7 @@ namespace UPM {
                 if (m == null) {
                     return null;
                 }
+
                 return cachedMachine ?? (cachedMachine = new StateMotorMachine(m.DefaultState));
             }
         }
