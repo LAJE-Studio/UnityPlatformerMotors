@@ -1,5 +1,5 @@
 ﻿namespace UPM.Input {
-    public class NativeInputProvider : InputProvider {
+    public sealed class NativeInputProvider : InputProvider {
         public override float GetHorizontal() {
             return GetAxis("Horizontal");
         }

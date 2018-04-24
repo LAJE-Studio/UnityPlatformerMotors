@@ -43,6 +43,7 @@
     <Compile Include="CollisionStatus.cs" />
     <Compile Include="Input\InputProvider.cs" />
     <Compile Include="Input\NativeInputProvider.cs" />
+    <Compile Include="Motors\AerialMotor.cs" />
     <Compile Include="Motors\Motor.cs" />
     <Compile Include="Motors\MotorUser.cs" />
     <Compile Include="Motors\States\BuiltIn\DashState.cs" />

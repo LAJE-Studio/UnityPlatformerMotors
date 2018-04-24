@@ -6,7 +6,7 @@ namespace UPM.Motors.States {
     /// Um <see cref="Motor"/> baseado em estados, muito usado em entidades que tem gravidade e se movimentam pelo chão.
     /// </summary>
     [CreateAssetMenu(menuName = "UPM/Motors/StateMotor")]
-    public class StateMotor : Motor {
+    public sealed class StateMotor : Motor {
         public State DefaultState;
         public override void Move(MotorUser user) {
             var m = user.StateMachine;
