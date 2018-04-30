@@ -100,7 +100,8 @@ namespace UPM.Motors {
 
         // Usamos FixedUpdate para evitar problemas de frame rate
         private void FixedUpdate() {
-            MovementTransform.position += (Vector3) Velocity;
+            Move();
+            MovementTransform.position += (Vector3) Velocity * Time.fixedDeltaTime;
         }
 
 
@@ -126,6 +127,12 @@ namespace UPM.Motors {
                 }
 
                 motorConfig = value;
+            }
+        }
+
+        public float SpeedPercent {
+            get {
+                return Velocity.magnitude / MaxSpeed;
             }
         }
 

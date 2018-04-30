@@ -22,7 +22,7 @@ namespace UPM.Physics {
             var vel = customVelocityProvider == null ? velocity : customVelocityProvider(user);
             var direction = Math.Sign(vel.y);
             var verticalRays = user.VerticalRaycasts;
-            var directionVector = new Vector2(0, vel.y * Time.deltaTime);
+            var directionVector = new Vector2(0, vel.y * Time.fixedDeltaTime);
             // Bounds2D
             var bMin = bounds.Min;
             var bMax = bounds.Max;
@@ -39,9 +39,9 @@ namespace UPM.Physics {
             for (byte x = 0; x < verticalRays; x++) {
                 var raycast = Physics2D.Raycast(origin, directionVector, rayLength, mask);
                 Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
-                if (raycast && !raycast.collider.isTrigger) {
+                if (raycast && !raycast.collider.isTrigger && raycast.distance < rayLength) {
                     LastHit = raycast;
-                    vel.y = raycast.distance / Time.deltaTime * direction;
+                    vel.y = raycast.distance / Time.fixedDeltaTime * direction;
                     rayLength = raycast.distance;
                     collStatus.Down = direction == -1;
                     collStatus.Up = direction == 1;
@@ -55,6 +55,10 @@ namespace UPM.Physics {
 
             if (!hitDown) {
                 collStatus.Down = false;
+            }
+
+            if (customVelocityProvider == null) {
+                velocity = vel;
             }
         }
     }

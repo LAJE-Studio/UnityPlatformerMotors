@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UPM.Motors;
+using UPM.Util;
 
 namespace UPM.Physics {
     /// <summary>
@@ -19,10 +20,13 @@ namespace UPM.Physics {
         }
 
         public void Check(MotorUser user, ref Vector2 velocity, ref CollisionStatus status) {
-            var bounds = user.Hitbox.bounds;
+            var bounds = (Bounds2D) user.Hitbox.bounds;
+            bounds.Center += Vector2.ClampMagnitude(velocity, user.MaxSpeed) * Time.deltaTime;
             var shrinkedBounds = bounds;
             shrinkedBounds.Expand(user.Inset * -2);
             var layerMask = UPMResources.Instance.CollisionMask;
+            UPMDebug.DrawBounds2D(bounds, Color.magenta);
+            UPMDebug.DrawBounds2D(shrinkedBounds, Color.yellow);
             foreach (var check in checks) {
                 check.Check(user, ref velocity, ref status, layerMask, bounds, shrinkedBounds);
             }

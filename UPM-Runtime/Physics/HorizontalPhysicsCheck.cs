@@ -17,7 +17,7 @@ namespace UPM.Physics {
             var bMax = bounds.Max;
 
             var horizontalRays = user.HorizontalRaycasts;
-            var directionVector = new Vector2(vel.x * Time.deltaTime, 0);
+            var directionVector = new Vector2(vel.x * Time.fixedDeltaTime, 0);
             var positiveDir = direction == 1;
             var originX = positiveDir ? bMax.x : bMin.x;
             var originY = shrinkedBounds.Min.y;
@@ -32,16 +32,15 @@ namespace UPM.Physics {
             for (var y = 0; y < horizontalRays; y++) {
                 var raycast = Physics2D.Raycast(origin, directionVector, rayLength, mask);
                 Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
-                if (raycast && !raycast.collider.isTrigger) {
+                if (raycast && !raycast.collider.isTrigger  && raycast.distance < rayLength) {
                     LastHit = raycast;
                     collStatus.Left = direction == -1;
                     collStatus.Right = direction == 1;
+                    var slopeAngle = Vector2.Angle(raycast.normal, Vector2.up);
                     if (config != null) {
-                        var slopeAngle = Vector2.Angle(raycast.normal, Vector2.up);
-
                         if (slopeAngle > maxAngle) {
                             //Hit wall
-                            vel.x = raycast.distance / Time.deltaTime * direction;
+                            vel.x = raycast.distance / Time.fixedDeltaTime * direction;
                             rayLength = raycast.distance;
 
                             /*  if (Collisions.ClimbingSlope) {
@@ -49,6 +48,16 @@ namespace UPM.Physics {
                               }*/
 
 
+                            continue;
+                        }
+                    } else {
+                        //Hit wall
+                        if (Mathf.RoundToInt(slopeAngle) % 90 == 0) {
+                            vel.x = 0;
+                        } else {
+                            vel.x = raycast.distance / Time.fixedDeltaTime * direction;
+                            rayLength = raycast.distance;
+                            vel.y = Mathf.Tan(slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(vel.x);
                             continue;
                         }
                     }

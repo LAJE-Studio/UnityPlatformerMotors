@@ -3,11 +3,11 @@
 namespace UPM.Util.Singleton {
     public class UPMSingletonScriptableObject<T> : ScriptableObject where T : UPMSingletonScriptableObject<T> {
         private static T instance;
-        public static readonly string Path = "UPM/Resources/" + typeof(T).Name;
+        public static readonly string Path = typeof(T).Name;
 
         public static T Instance {
             get {
-                return instance ?? (instance = Load());
+                return instance ? instance : (instance = Load());
             }
         }
 
