@@ -21,8 +21,8 @@ namespace UPM.Motors.States {
             }
         }
 
-        public void Move(MotorUser user, ref Vector2 velocity, ref CollisionStatus status, StateMotorConfig config) {
-            state.Move(user, ref velocity, ref status, this, config);
+        public void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus status, StateMotorConfig config, LayerMask collisionMask) {
+            state.Move(user, ref velocity, ref status, this, config, collisionMask);
         }
     }
 }

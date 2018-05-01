@@ -10,7 +10,7 @@ namespace UPM.Physics {
             private set;
         }
 
-        public override void Check(MotorUser user, ref Vector2 vel, ref CollisionStatus collStatus, LayerMask mask, Bounds2D bounds, Bounds2D shrinkedBounds) {
+        public override void Check(IMovable user, ref Vector2 vel, ref CollisionStatus collStatus, LayerMask mask, Bounds2D bounds, Bounds2D shrinkedBounds) {
             var direction = (int) Mathf.Sign(vel.x);
 
             var bMin = bounds.Min;

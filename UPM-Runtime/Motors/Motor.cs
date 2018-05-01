@@ -11,10 +11,10 @@ namespace UPM.Motors {
     /// </summary>
     public abstract class Motor : ScriptableObject {
         /// <summary>
-        /// Função usada para movimentar um <see cref="MotorUser"/>
+        /// Função usada para movimentar um <see cref="IMovable"/>
         /// </summary>
         /// <param name="user"></param>
-        public void Move(MotorUser user) {
+        public void Move(IMovable user) {
             var vel = user.Velocity;
             var status = user.CollisionStatus;
             Move(user, ref vel, ref status);
@@ -22,8 +22,8 @@ namespace UPM.Motors {
             user.Velocity = vel;
         }
 
-        public abstract void Move(MotorUser user, ref Vector2 velocity, ref CollisionStatus status);
-        public abstract bool RequiresConfig(MotorUser user);
-        public abstract MotorConfig CreateConfig(MotorUser user);
+        public abstract void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus status);
+        public abstract bool RequiresConfig(IMovable user);
+        public abstract MotorConfig CreateConfig(IMovable user);
     }
 }

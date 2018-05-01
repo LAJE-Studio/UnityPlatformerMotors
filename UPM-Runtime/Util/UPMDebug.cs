@@ -4,6 +4,10 @@ namespace UPM.Util {
     public static class UPMDebug {
         public const string Prefix = "[UPM] ";
 
+        public static void LogError(string s) {
+            Debug.LogError(Prefix + s);
+        }
+
         public static void LogErrorFormat(string error, params object[] format) {
             Debug.LogErrorFormat(Prefix + error, format);
         }
@@ -11,6 +15,11 @@ namespace UPM.Util {
         public static void LogWarning(string s) {
             Debug.LogWarning(Prefix + s);
         }
+
+        public static void LogWarningFormat(string error, params object[] format) {
+            Debug.LogWarningFormat(Prefix + error, format);
+        }
+
 
         public static void DrawBox2DWire(Vector2 center, Vector2 size) {
             var halfWidth = size.x / 2;

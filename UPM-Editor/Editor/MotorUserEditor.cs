@@ -6,12 +6,12 @@ using UPM.Motors;
 using UPM.Motors.Config;
 
 namespace UPM.Editor {
-    [CustomEditor(typeof(MotorUser))]
+    [CustomEditor(typeof(BasicMovable))]
     public class MotorUserEditor : UnityEditor.Editor {
-        private MotorUser user;
+        private BasicMovable user;
 
         private void OnEnable() {
-            user = (MotorUser) target;
+            user = (BasicMovable) target;
         }
 
         public override void OnInspectorGUI() {

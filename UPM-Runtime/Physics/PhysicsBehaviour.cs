@@ -19,12 +19,10 @@ namespace UPM.Physics {
             this.checks = checks;
         }
 
-        public void Check(MotorUser user, ref Vector2 velocity, ref CollisionStatus status) {
+        public void Check(IMovable user, ref Vector2 velocity, ref CollisionStatus status, LayerMask layerMask) {
             var bounds = (Bounds2D) user.Hitbox.bounds;
-            bounds.Center += Vector2.ClampMagnitude(velocity, user.MaxSpeed) * Time.deltaTime;
             var shrinkedBounds = bounds;
             shrinkedBounds.Expand(user.Inset * -2);
-            var layerMask = UPMResources.Instance.CollisionMask;
             UPMDebug.DrawBounds2D(bounds, Color.magenta);
             UPMDebug.DrawBounds2D(shrinkedBounds, Color.yellow);
             foreach (var check in checks) {

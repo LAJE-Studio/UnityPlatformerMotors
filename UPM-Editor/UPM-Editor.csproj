@@ -44,6 +44,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Editor\Config\MotorConfigEditor.cs" />
+    <Compile Include="Editor\Config\StateMotorConfigEditor.cs" />
     <Compile Include="Editor\MotorUserEditor.cs" />
     <Compile Include="Editor\States\StateMotorEditor.cs" />
     <Compile Include="Editor\States\StateSelectorContent.cs" />

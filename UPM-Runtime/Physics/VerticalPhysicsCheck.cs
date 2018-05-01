@@ -10,14 +10,14 @@ namespace UPM.Physics {
             private set;
         }
 
-        private readonly Func<MotorUser, Vector2> customVelocityProvider;
+        private readonly Func<IMovable, Vector2> customVelocityProvider;
         public VerticalPhysicsCheck() { }
 
-        public VerticalPhysicsCheck(Func<MotorUser, Vector2> customVelocityProvider) {
+        public VerticalPhysicsCheck(Func<IMovable, Vector2> customVelocityProvider) {
             this.customVelocityProvider = customVelocityProvider;
         }
 
-        public override void Check(MotorUser user, ref Vector2 velocity, ref CollisionStatus collStatus, LayerMask mask, Bounds2D bounds, Bounds2D shrinkedBounds) {
+        public override void Check(IMovable user, ref Vector2 velocity, ref CollisionStatus collStatus, LayerMask mask, Bounds2D bounds, Bounds2D shrinkedBounds) {
             //Direction
             var vel = customVelocityProvider == null ? velocity : customVelocityProvider(user);
             var direction = Math.Sign(vel.y);

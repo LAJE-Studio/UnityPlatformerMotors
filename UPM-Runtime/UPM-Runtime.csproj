@@ -48,8 +48,9 @@
     <Compile Include="Motors\Config\GroundMotorConfig.cs" />
     <Compile Include="Motors\Config\MotorConfig.cs" />
     <Compile Include="Motors\Config\StateMotorConfig.cs" />
+    <Compile Include="Motors\IMovable.cs" />
     <Compile Include="Motors\Motor.cs" />
-    <Compile Include="Motors\MotorUser.cs" />
+    <Compile Include="Motors\BasicMovable.cs" />
     <Compile Include="Motors\States\BuiltIn\DashState.cs" />
     <Compile Include="Motors\States\BuiltIn\GroundedState.cs" />
     <Compile Include="Motors\States\BuiltIn\MidAirState.cs" />
@@ -62,9 +63,7 @@
     <Compile Include="Physics\PhysicsCheck.cs" />
     <Compile Include="Physics\VerticalPhysicsCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UPMResources.cs" />
     <Compile Include="Util\Bounds2D.cs" />
-    <Compile Include="Util\Singleton\UPMSingletonScriptableObject.cs" />
     <Compile Include="Util\UPMDebug.cs" />
   </ItemGroup>
   <ItemGroup>

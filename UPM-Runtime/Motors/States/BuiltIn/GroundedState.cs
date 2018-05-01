@@ -18,12 +18,12 @@ namespace UPM.Motors.States.BuiltIn {
             SlopeCheck
         );
 
-        private static Vector2 SlopeCheckProvider(MotorUser arg) {
+        private static Vector2 SlopeCheckProvider(IMovable arg) {
             return Vector2.down * Time.fixedDeltaTime;
         }
 
 
-        public override void Move(MotorUser user, ref Vector2 velocity, ref CollisionStatus collisionStatus, StateMotorMachine machine, StateMotorConfig config1) {
+        public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus collisionStatus, StateMotorMachine machine, StateMotorConfig config1, LayerMask collisionMask) {
             var config = user.GetMotorConfig<GroundMotorConfig>();
             if (config == null) {
                 UPMDebug.LogWarning("Expected GroundMotorConfig for GroundedState @ " + user);
@@ -34,10 +34,10 @@ namespace UPM.Motors.States.BuiltIn {
             velocity.y += Gravity * config.GravityScale * Time.fixedDeltaTime;
             var max = user.MaxSpeed;
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
-            GroundedBehaviour.Check(user, ref velocity, ref collisionStatus);
+            GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);
         }
 
-        private void ProcessInputs(MotorUser user, GroundMotorConfig config, ref Vector2 velocity, ref CollisionStatus collisionStatus) {
+        private void ProcessInputs(IMovable user, GroundMotorConfig config, ref Vector2 velocity, ref CollisionStatus collisionStatus) {
             var provider = user.InputProvider;
             var hasProvider = provider != null;
             var xInput = hasProvider ? provider.GetHorizontal() : 0;

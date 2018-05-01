@@ -6,17 +6,19 @@ using UPM.Physics;
 namespace UPM.Motors {
     [CreateAssetMenu(menuName = "UPM/Motors/AerialMotor")]
     public sealed class AerialMotor : Motor {
-        public override void Move(MotorUser user, ref Vector2 velocity, ref CollisionStatus status) {
+        public LayerMask CollisionMask;
+
+        public override void Move(IMovable user, ref Vector2 velocity, ref CollisionStatus status) {
             ProcessInputs(ref velocity, user);
             velocity = Vector2.ClampMagnitude(velocity, user.MaxSpeed);
-            AerialBehaviour.Check(user, ref velocity, ref status);
+            AerialBehaviour.Check(user, ref velocity, ref status, CollisionMask);
         }
 
-        public override bool RequiresConfig(MotorUser user) {
+        public override bool RequiresConfig(IMovable user) {
             return false;
         }
 
-        public override MotorConfig CreateConfig(MotorUser user) {
+        public override MotorConfig CreateConfig(IMovable user) {
             return null;
         }
 
@@ -26,7 +28,7 @@ namespace UPM.Motors {
         );
 
 
-        private static void ProcessInputs(ref Vector2 vel, MotorUser user) {
+        private static void ProcessInputs(ref Vector2 vel, IMovable user) {
             var provider = user.InputProvider;
             if (provider == null) {
                 return;
