@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{39EBCBE9-0D91-4748-B8C7-1DA714568045}</ProjectGuid>
+    <ProjectGuid>{6C8F1F99-D636-43E3-AD13-FC277482E92B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UPM</RootNamespace>
-    <AssemblyName>UPM-Runtime</AssemblyName>
+    <RootNamespace>UPM.Addons.Rewired</RootNamespace>
+    <AssemblyName>UPM_Rewired</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,50 +32,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Rewired_Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Libraries\Rewired_Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Libraries\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollisionStatus.cs" />
-    <Compile Include="Input\ConstantInputProvider.cs" />
-    <Compile Include="Input\InputProvider.cs" />
-    <Compile Include="Input\NativeInputProvider.cs" />
-    <Compile Include="Motors\AerialMotor.cs" />
-    <Compile Include="Motors\Config\GroundMotorConfig.cs" />
-    <Compile Include="Motors\Config\MotorConfig.cs" />
-    <Compile Include="Motors\Config\StateMotorConfig.cs" />
-    <Compile Include="Motors\IMovable.cs" />
-    <Compile Include="Motors\Motor.cs" />
-    <Compile Include="Motors\BasicMovable.cs" />
-    <Compile Include="Motors\States\BuiltIn\DashState.cs" />
-    <Compile Include="Motors\States\BuiltIn\GroundedState.cs" />
-    <Compile Include="Motors\States\BuiltIn\MidAirState.cs" />
-    <Compile Include="Motors\States\BuiltIn\WallClimbingState.cs" />
-    <Compile Include="Motors\States\State.cs" />
-    <Compile Include="Motors\States\StateMotor.cs" />
-    <Compile Include="Motors\States\StateMotorMachine.cs" />
-    <Compile Include="Physics\HorizontalPhysicsCheck.cs" />
-    <Compile Include="Physics\PhysicsBehaviour.cs" />
-    <Compile Include="Physics\PhysicsCheck.cs" />
-    <Compile Include="Physics\VerticalPhysicsCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\Bounds2D.cs" />
-    <Compile Include="Util\UPMDebug.cs" />
+    <Compile Include="RewiredInputProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\.gitignore">
-      <Link>.gitignore</Link>
-    </Content>
-    <Content Include="..\LICENSE.md">
-      <Link>LICENSE.md</Link>
-    </Content>
-    <Content Include="..\README.md">
-      <Link>README.md</Link>
-    </Content>
+    <ProjectReference Include="..\UPM-Runtime\UPM-Runtime.csproj">
+      <Project>{39ebcbe9-0d91-4748-b8c7-1da714568045}</Project>
+      <Name>UPM-Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -186,3 +186,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/httpRequests
+/Libraries/Rewired_Core.dll
+/Libraries/Rewired_Core.XML
