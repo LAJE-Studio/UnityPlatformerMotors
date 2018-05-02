@@ -5,15 +5,15 @@ using UPM.Motors.Config;
 namespace UPM.Editor.Config {
     [CustomEditor(typeof(StateMotorConfig), editorForChildClasses: true)]
     public class StateMotorConfigEditor : MotorConfigEditor {
-        private StateMotorConfig config;
+        private StateMotorConfig stateConfig;
 
         protected override void OnEnable() {
             base.OnEnable();
-            config = (StateMotorConfig) target;
+            stateConfig = (StateMotorConfig) target;
         }
 
         public override void OnInspectorGUI() {
-            var sm = config.StateMachine;
+            var sm = stateConfig.StateMachine;
             var defaultColor = GUI.contentColor;
             var msg = "Config State Machine: ";
             if (sm == null) {
