@@ -4,7 +4,7 @@ using UPM.Motors.Config;
 using UPM.Physics;
 using UPM.Util;
 
-namespace UPM.Motors.States.BuiltIn {
+namespace UPM.Motors.States.Defaults {
     public sealed class GroundedState : State {
         public State OnGetOffGround;
         public float Gravity = 19.62F;

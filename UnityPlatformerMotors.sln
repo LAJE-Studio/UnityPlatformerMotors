@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPM-Editor", "UPM-Editor\UP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPM-Rewired", "UPM-Rewired\UPM-Rewired.csproj", "{6C8F1F99-D636-43E3-AD13-FC277482E92B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPM-DefaultStates", "UPM-DefaultStates\UPM-DefaultStates.csproj", "{25E530EB-8A3E-446A-BFB6-7BA1E3E1506E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{6C8F1F99-D636-43E3-AD13-FC277482E92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C8F1F99-D636-43E3-AD13-FC277482E92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C8F1F99-D636-43E3-AD13-FC277482E92B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25E530EB-8A3E-446A-BFB6-7BA1E3E1506E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E530EB-8A3E-446A-BFB6-7BA1E3E1506E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E530EB-8A3E-446A-BFB6-7BA1E3E1506E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E530EB-8A3E-446A-BFB6-7BA1E3E1506E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
