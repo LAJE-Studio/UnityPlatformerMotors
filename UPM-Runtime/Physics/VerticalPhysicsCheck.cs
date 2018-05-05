@@ -4,22 +4,19 @@ using UPM.Motors;
 using UPM.Util;
 
 namespace UPM.Physics {
-    public class VerticalPhysicsCheck : PhysicsCheck {
+    public class VerticalPhysicsCheck : SimplePhysicsCheck {
+        public VerticalPhysicsCheck(CustomVelocityProvider customVelocityProvider = null) :
+            base(customVelocityProvider) { }
+
         public RaycastHit2D? LastHit {
             get;
             private set;
         }
 
-        private readonly Func<IMovable, Vector2> customVelocityProvider;
-        public VerticalPhysicsCheck() { }
 
-        public VerticalPhysicsCheck(Func<IMovable, Vector2> customVelocityProvider) {
-            this.customVelocityProvider = customVelocityProvider;
-        }
-
-        public override void Check(IMovable user, ref Vector2 velocity, ref CollisionStatus collStatus, LayerMask mask, Bounds2D bounds, Bounds2D shrinkedBounds) {
+        protected override void DoCheck(IMovable user, ref Vector2 vel, ref CollisionStatus collStatus, LayerMask mask,
+            Bounds2D bounds, Bounds2D shrinkedBounds) {
             //Direction
-            var vel = customVelocityProvider == null ? velocity : customVelocityProvider(user);
             var direction = Math.Sign(vel.y);
             var verticalRays = user.VerticalRaycasts;
             var directionVector = new Vector2(0, vel.y * Time.fixedDeltaTime);
@@ -55,10 +52,6 @@ namespace UPM.Physics {
 
             if (!hitDown) {
                 collStatus.Down = false;
-            }
-
-            if (customVelocityProvider == null) {
-                velocity = vel;
             }
         }
     }

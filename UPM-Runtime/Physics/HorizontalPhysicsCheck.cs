@@ -4,13 +4,17 @@ using UPM.Motors.Config;
 using UPM.Util;
 
 namespace UPM.Physics {
-    public class HorizontalPhysicsCheck : PhysicsCheck {
+    public class HorizontalPhysicsCheck : SimplePhysicsCheck {
+        public HorizontalPhysicsCheck(CustomVelocityProvider customVelocityProvider = null) : base(
+            customVelocityProvider) { }
+
         public RaycastHit2D? LastHit {
             get;
             private set;
         }
 
-        public override void Check(IMovable user, ref Vector2 vel, ref CollisionStatus collStatus, LayerMask mask, Bounds2D bounds, Bounds2D shrinkedBounds) {
+        protected override void DoCheck(IMovable user, ref Vector2 vel, ref CollisionStatus collStatus, LayerMask mask,
+            Bounds2D bounds, Bounds2D shrinkedBounds) {
             var direction = (int) Mathf.Sign(vel.x);
 
             var bMin = bounds.Min;
@@ -32,7 +36,7 @@ namespace UPM.Physics {
             for (var y = 0; y < horizontalRays; y++) {
                 var raycast = Physics2D.Raycast(origin, directionVector, rayLength, mask);
                 Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
-                if (raycast && !raycast.collider.isTrigger  && raycast.distance < rayLength) {
+                if (raycast && !raycast.collider.isTrigger && raycast.distance < rayLength) {
                     LastHit = raycast;
                     collStatus.Left = direction == -1;
                     collStatus.Right = direction == 1;

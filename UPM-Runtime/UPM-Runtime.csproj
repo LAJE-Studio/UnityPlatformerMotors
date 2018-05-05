@@ -57,6 +57,7 @@
     <Compile Include="Physics\HorizontalPhysicsCheck.cs" />
     <Compile Include="Physics\PhysicsBehaviour.cs" />
     <Compile Include="Physics\PhysicsCheck.cs" />
+    <Compile Include="Physics\SimplePhysicsCheck.cs" />
     <Compile Include="Physics\VerticalPhysicsCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Bounds2D.cs" />
