@@ -19,7 +19,7 @@ namespace UPM.Motors.States.Defaults {
         );
 
         private static Vector2 SlopeCheckProvider(IMovable arg) {
-            return Vector2.down * Time.fixedDeltaTime;
+            return Vector2.down * Time.deltaTime;
         }
 
 
@@ -31,7 +31,7 @@ namespace UPM.Motors.States.Defaults {
             }
 
             ProcessInputs(user, config, ref velocity, ref collisionStatus);
-            velocity.y += Gravity * config.GravityScale * Time.fixedDeltaTime;
+            velocity.y += Gravity * config.GravityScale * Time.deltaTime;
             var max = user.MaxSpeed;
             velocity.x = Mathf.Clamp(velocity.x, -max, max);
             GroundedBehaviour.Check(user, ref velocity, ref collisionStatus, collisionMask);

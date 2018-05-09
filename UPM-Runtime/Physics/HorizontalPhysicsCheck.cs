@@ -21,7 +21,7 @@ namespace UPM.Physics {
             var bMax = bounds.Max;
 
             var horizontalRays = user.HorizontalRaycasts;
-            var directionVector = new Vector2(vel.x * Time.fixedDeltaTime, 0);
+            var directionVector = new Vector2(vel.x * Time.deltaTime, 0);
             var positiveDir = direction == 1;
             var originX = positiveDir ? bMax.x : bMin.x;
             var originY = shrinkedBounds.Min.y;
@@ -44,7 +44,7 @@ namespace UPM.Physics {
                     if (config != null) {
                         if (slopeAngle > maxAngle) {
                             //Hit wall
-                            vel.x = raycast.distance / Time.fixedDeltaTime * direction;
+                            vel.x = raycast.distance / Time.deltaTime * direction;
                             rayLength = raycast.distance;
 
                             /*  if (Collisions.ClimbingSlope) {
@@ -59,7 +59,7 @@ namespace UPM.Physics {
                         if (Mathf.RoundToInt(slopeAngle) % 90 == 0) {
                             vel.x = 0;
                         } else {
-                            vel.x = raycast.distance / Time.fixedDeltaTime * direction;
+                            vel.x = raycast.distance / Time.deltaTime * direction;
                             rayLength = raycast.distance;
                             vel.y = Mathf.Tan(slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(vel.x);
                             continue;

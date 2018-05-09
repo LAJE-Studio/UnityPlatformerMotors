@@ -147,7 +147,7 @@ namespace UPM.Motors {
 
         public void Move() {
             motor.Move(this);
-            MovementTransform.position += (Vector3) Velocity * Time.fixedDeltaTime;
+            MovementTransform.position += (Vector3) Velocity * Time.deltaTime;
         }
 
         private void FixedUpdate() {

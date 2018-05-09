@@ -19,7 +19,7 @@ namespace UPM.Physics {
             //Direction
             var direction = Math.Sign(vel.y);
             var verticalRays = user.VerticalRaycasts;
-            var directionVector = new Vector2(0, vel.y * Time.fixedDeltaTime);
+            var directionVector = new Vector2(0, vel.y * Time.deltaTime);
             // Bounds2D
             var bMin = bounds.Min;
             var bMax = bounds.Max;
@@ -38,7 +38,7 @@ namespace UPM.Physics {
                 Debug.DrawRay(origin, directionVector, raycast ? Color.green : Color.red);
                 if (raycast && !raycast.collider.isTrigger && raycast.distance < rayLength) {
                     LastHit = raycast;
-                    vel.y = raycast.distance / Time.fixedDeltaTime * direction;
+                    vel.y = raycast.distance / Time.deltaTime * direction;
                     rayLength = raycast.distance;
                     collStatus.Down = direction == -1;
                     collStatus.Up = direction == 1;
